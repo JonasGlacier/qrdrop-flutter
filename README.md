@@ -1,30 +1,17 @@
-# TXQR
+# QRDrop
 
-[![GoDoc](https://godoc.org/github.com/divan/txqr?status.svg)](https://godoc.org/github.com/divan/txqr)
+QRDrop is a Flutter Android application for **transferring files between air gapped devices via animated QR codes**. 
 
-TXQR (Transfer via QR) is a protocol and set of tools and libs to transfer data via animated QR codes. It uses [fountain codes](https://en.wikipedia.org/wiki/Fountain_code) for error correction.
-
-See related blog posts for more details:
-- [Animated QR data transfer with Gomobile and Gopherjs](https://divan.github.io/posts/animatedqr/)
-- [Fountain codes and animated QR](https://divan.github.io/posts/fountaincodes/)
-
-## Demo
+The app reuses the existing Go core library via `gomobile bind`, bridged to Flutter through Kotlin MethodChannels. It uses [fountain codes](https://en.wikipedia.org/wiki/Fountain_code) for error correction. 
 
 ![Demo](./docs/demo.gif)
 
-Reader iOS app in the demo (uses this lib via Gomobile): [https://github.com/divan/txqr-reader](https://github.com/divan/txqr-reader)
-
-## Flutter File Transfer App
-
-A modern Flutter-based Android application for **bidirectional file transfer via animated QR codes**. Users can both send and receive files between phones without network connection. The app reuses the existing Go core library via `gomobile bind`, bridged to Flutter through Kotlin MethodChannels.
-
-### Features
+## Features
 
 **Send:**
 - Pick any file from device storage
 - Automatically encode into fountain-coded animated QR frames
-- Display animated QR codes on screen at configurable FPS (4–12 fps)
-- Live loop counter and frame progress indicator
+- Display animated QR codes on screen at configurable FPS (4–12 fps) on loop
 - Supports files of any size (within practical encoding limits)
 
 **Receive:**
@@ -32,21 +19,17 @@ A modern Flutter-based Android application for **bidirectional file transfer via
 - Live progress indicator with animated overlay
 - Automatic base64 decode and file extraction
 - Files saved to app documents directory
-- Transfer speed and time tracking
-- Share or open received files
 
-**General:**
-- Material 3 UI with dark mode support
-- Home screen with Send/Receive buttons
-- No network required — direct device-to-device transfer
-
-### File Format
+## File Format
 
 Files are transmitted as a payload: `filename\nbase64-encoded-bytes`
 
 When a receiver completes the transfer, the app parses this format, decodes the base64 content, and saves the file with its original name.
 
-### Building the Android App
+
+------
+
+## Building the Android App
 
 #### Prerequisites
 
@@ -79,7 +62,10 @@ When a receiver completes the transfer, the app parses this format, decodes the 
    cd flutter_app && flutter build apk --release
    ```
 
-### Project Structure
+
+---
+
+## Project Structure
 
 ```
 flutter_app/
@@ -145,14 +131,14 @@ Also see `cmd/txqr-tester` app for automated testing of different encoder parame
 
 ## Troubleshooting
 
-### `gomobile: ANDROID_NDK_HOME specifies ... unsupported API version`
+#### `gomobile: ANDROID_NDK_HOME specifies ... unsupported API version`
 
 This occurs when the NDK version doesn't support the required API level. Ensure you have an NDK version 21 or higher installed:
 - Open Android Studio → Settings → Android SDK → SDK Tools
 - Install "NDK (Side by side)" version 25 or higher
 - gomobile typically requires NDK API level 21–35
 
-### App crashes on startup
+#### App crashes on startup
 
 If the app crashes immediately, the AAR might not have been built or included properly:
 1. Run `make aar` from the project root

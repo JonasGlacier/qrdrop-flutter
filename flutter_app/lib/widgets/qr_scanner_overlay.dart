@@ -50,7 +50,7 @@ class _OverlayPainter extends CustomPainter {
     // Dark overlay with a hole
     final overlayPath = Path()
       ..addRect(Rect.fromLTWH(0, 0, size.width, size.height))
-      ..addRRect(RRect.fromRectAndRadius(windowRect, const Radius.circular(16)))
+      ..addRRect(RRect.fromRectAndRadius(windowRect, const Radius.circular(0)))
       ..fillType = PathFillType.evenOdd;
 
     canvas.drawPath(
@@ -60,12 +60,12 @@ class _OverlayPainter extends CustomPainter {
 
     // Corner brackets
     const bracketLen = 32.0;
-    const bracketStroke = 4.0;
+    const bracketStroke = 8.0;
     final bracketPaint = Paint()
-      ..color = isDetected ? Colors.green : Colors.red
+      ..color = isDetected ? Colors.lightGreenAccent : Colors.redAccent
       ..strokeWidth = bracketStroke
       ..style = PaintingStyle.stroke
-      ..strokeCap = StrokeCap.round;
+      ..strokeCap = StrokeCap.square;
 
     final left = center.dx - halfWindow;
     final top = center.dy - halfWindow;
@@ -87,18 +87,18 @@ class _OverlayPainter extends CustomPainter {
 
     // Progress arc
     if (progress > 0) {
-      final arcRect = windowRect.inflate(12);
+      final arcRect = windowRect.inflate(-48);
       final progressPaint = Paint()
-        ..color = Colors.indigoAccent
-        ..strokeWidth = 3.5
-        ..style = PaintingStyle.stroke
-        ..strokeCap = StrokeCap.round;
+        ..color = isDetected ? Colors.lightGreenAccent.withOpacity(0.5) : Colors.redAccent.withOpacity(0.5) 
+        ..strokeWidth = 2.0
+        ..style = PaintingStyle.fill
+        ..strokeCap = StrokeCap.square;
 
       canvas.drawArc(
         arcRect,
         -1.5708, // -pi/2 (start at top)
         progress * 6.2832, // progress * 2*pi
-        false,
+        true,
         progressPaint,
       );
     }
