@@ -72,7 +72,7 @@ When a receiver completes the transfer, the app parses this format, decodes the 
 
 3. **Run the app on an Android device or emulator**:
    ```bash
-   flutter run
+   cd flutter_app && flutter run
    ```
 
 4. **(Optional) Build APK for distribution**:
