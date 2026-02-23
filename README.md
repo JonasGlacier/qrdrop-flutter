@@ -66,8 +66,7 @@ When a receiver completes the transfer, the app parses this format, decodes the 
 
 2. **Install Flutter dependencies**:
    ```bash
-   cd flutter_app
-   flutter pub get
+   cd flutter_app && flutter pub get
    ```
 
 3. **Run the app on an Android device or emulator**:
@@ -77,7 +76,7 @@ When a receiver completes the transfer, the app parses this format, decodes the 
 
 4. **(Optional) Build APK for distribution**:
    ```bash
-   flutter build apk --release
+   cd flutter_app && flutter build apk --release
    ```
 
 ### Project Structure
