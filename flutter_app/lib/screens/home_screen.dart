@@ -291,9 +291,12 @@ class _HomeScreenState extends State<HomeScreen> {
   // ── Actions ───────────────────────────────────────────────────────────────
 
   void _showFilterSheet() {
+    final isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+    final colors = _getColors(isDark);
+
     showModalBottomSheet<void>(
       context: context,
-      backgroundColor: Colors.white,
+      backgroundColor: colors.sectionBg,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
@@ -458,7 +461,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: colors.green,
                       shadowColor: colors.greenShadow,
                       icon: Icons.arrow_upward_rounded,
-                      decorIcon: Icons.qr_code_2_rounded,
+                      decorIcon: Icons.qr_code_rounded,
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(builder: (_) => const SendScreen()),
@@ -473,7 +476,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: colors.blue,
                       shadowColor: colors.blueShadow,
                       icon: Icons.arrow_downward_rounded,
-                      decorIcon: Icons.document_scanner_outlined,
+                      decorIcon: Icons.center_focus_strong_rounded,
                       onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -776,7 +779,6 @@ class _ActionCard extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        clipBehavior: Clip.hardEdge,
         decoration: BoxDecoration(
           color: color,
           borderRadius: BorderRadius.circular(32),
@@ -792,53 +794,58 @@ class _ActionCard extends StatelessWidget {
             ),
           ],
         ),
-        padding: const EdgeInsets.all(24),
-        child: Stack(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white.withValues(alpha: 0.25),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  padding: const EdgeInsets.all(12),
-                  child: Icon(icon, color: Colors.white, size: 32),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(32),
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(24),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.25),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      padding: const EdgeInsets.all(12),
+                      child: Icon(icon, color: Colors.white, size: 32),
+                    ),
+                    const SizedBox(height: 24),
+                    Text(
+                      sublabel,
+                      style: const TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                        letterSpacing: 0.12,
+                      ),
+                    ),
+                    const SizedBox(height: 2),
+                    Text(
+                      label.toUpperCase(),
+                      style: const TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w900,
+                        color: Colors.white,
+                        letterSpacing: 0.24,
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 24),
-                Text(
-                  sublabel,
-                  style: const TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                    letterSpacing: 0.12,
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  label.toUpperCase(),
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w900,
-                    color: Colors.white,
-                    letterSpacing: 0.24,
-                  ),
-                ),
-              ],
-            ),
-            // Decorative icon – top-right
-            Positioned(
-              top: -8,
-              right: -8,
-              child: Icon(
-                decorIcon,
-                color: Colors.white.withValues(alpha: 0.20),
-                size: 72,
               ),
-            ),
-          ],
+              // Decorative icon – top-right
+              Positioned(
+                top: -12,
+                right: -12,
+                child: Icon(
+                  decorIcon,
+                  color: Colors.white.withValues(alpha: 0.1),
+                  size: 96,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
