@@ -1,5 +1,5 @@
-name: txqr_app
-description: "TXQR - Transfer files via animated QR codes"
+name: qrdrop_app
+description: "QR Drop - Transfer files via animated QR codes"
 publish_to: 'none'
 version: 1.0.0+1
 

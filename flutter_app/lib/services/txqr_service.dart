@@ -1,6 +1,8 @@
 import 'package:flutter/services.dart';
 
-/// Dart-side wrapper around the Go txqr encoder/decoder exposed via MethodChannel.
+/// Dart-side wrapper around the Go TXQR encoder/decoder exposed via MethodChannel.
+/// Note: Channel names and native bindings remain as "txqr" to maintain compatibility
+/// with the underlying Go backend (TXQR library).
 class TxqrService {
   static const _decoderChannel = MethodChannel('com.divan.txqr/decoder');
   static const _encoderChannel = MethodChannel('com.divan.txqr/encoder');

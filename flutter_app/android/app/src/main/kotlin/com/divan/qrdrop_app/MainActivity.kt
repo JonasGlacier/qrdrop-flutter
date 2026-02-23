@@ -1,4 +1,4 @@
-package com.divan.txqr_app
+package com.divan.qrdrop_app
 
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine

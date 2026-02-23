@@ -24,7 +24,7 @@ class ResultScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final sizeStr = _humanSize(fileSize);
-    final isDownloadFolder = filePath.contains('/Download/TXQR/');
+    final isDownloadFolder = filePath.contains('/Download/QR Drop/');
 
     return Scaffold(
       appBar: AppBar(
@@ -113,7 +113,7 @@ class ResultScreen extends StatelessWidget {
                         const SizedBox(height: 4),
                         Text(
                           isDownloadFolder
-                              ? 'Saved to Download/TXQR/'
+                              ? 'Saved to Download/QR Drop/'
                               : 'Saved to app directory',
                           style: theme.textTheme.bodySmall?.copyWith(
                             color: theme.colorScheme.onSurfaceVariant,

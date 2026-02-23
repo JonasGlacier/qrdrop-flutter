@@ -1,6 +1,6 @@
-# txqr_app
+# QR Drop
 
-A new Flutter project.
+A Flutter application for transferring files via animated QR codes.
 
 ## Getting Started
 

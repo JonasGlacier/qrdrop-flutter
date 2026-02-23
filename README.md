@@ -14,7 +14,7 @@ See related blog posts for more details:
 
 Reader iOS app in the demo (uses this lib via Gomobile): [https://github.com/divan/txqr-reader](https://github.com/divan/txqr-reader)
 
-## Flutter Android File Transfer App
+## Flutter File Transfer App
 
 A modern Flutter-based Android application for **bidirectional file transfer via animated QR codes**. Users can both send and receive files between phones without network connection. The app reuses the existing Go core library via `gomobile bind`, bridged to Flutter through Kotlin MethodChannels.
 

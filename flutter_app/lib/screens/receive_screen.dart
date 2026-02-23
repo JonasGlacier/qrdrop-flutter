@@ -67,7 +67,7 @@ class _ReceiveScreenState extends State<ReceiveScreen> {
       try {
         final error = await _txqr.decode(raw);
         if (error != null && error.isNotEmpty) {
-          // Not a TXQR frame – ignore silently
+          // Not a valid QR Drop frame – ignore silently
           _processing = false;
           continue;
         }
@@ -97,7 +97,7 @@ class _ReceiveScreenState extends State<ReceiveScreen> {
           final base64Content = lines.sublist(1).join('\n');
           final fileBytes = base64Decode(base64Content);
 
-          // Save file to Download/TXQR directory
+          // Save file to Download/QR Drop directory
           final dir = await _getDownloadTxqrDirectory();
           final filePath = '${dir.path}/$fileName';
           final file = File(filePath);
@@ -127,7 +127,7 @@ class _ReceiveScreenState extends State<ReceiveScreen> {
           await _cameraController.start();
         }
       } catch (e) {
-        debugPrint('TXQR decode error: $e');
+        debugPrint('QR Drop decode error: $e');
         if (!mounted) return;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -151,7 +151,7 @@ class _ReceiveScreenState extends State<ReceiveScreen> {
     });
   }
 
-  /// Get or create the Download/TXQR directory for saving received files.
+  /// Get or create the Download/QR Drop directory for saving received files.
   Future<Directory> _getDownloadTxqrDirectory() async {
     Directory? baseDir;
     
@@ -164,7 +164,7 @@ class _ReceiveScreenState extends State<ReceiveScreen> {
         final storageIndex = pathParts.indexOf('Android');
         if (storageIndex > 0) {
           final storagePath = pathParts.sublist(0, storageIndex).join('/');
-          baseDir = Directory('$storagePath/Download/TXQR');
+          baseDir = Directory('$storagePath/Download/QR Drop');
         }
       }
     }

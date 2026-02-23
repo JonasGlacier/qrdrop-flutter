@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'receive_screen.dart';
 import 'send_screen.dart';
+import 'settings_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,6 +12,21 @@ class HomeScreen extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.settings_rounded, color: theme.colorScheme.onSurface),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const SettingsScreen()),
+            ),
+          ),
+          const SizedBox(width: 8),
+        ],
+      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -47,13 +63,13 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(height: 24),
 
                 // Title
-                Text(
-                  'TXQR',
-                  style: theme.textTheme.headlineLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 2,
-                  ),
-                ),
+                 Text(
+                   'QR Drop',
+                   style: theme.textTheme.headlineLarge?.copyWith(
+                     fontWeight: FontWeight.bold,
+                     letterSpacing: 2,
+                   ),
+                 ),
                 const SizedBox(height: 8),
 
                 // Subtitle

@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.divan.txqr_app"
+    namespace = "com.divan.qrdrop_app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -20,7 +20,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.divan.txqr_app"
+        applicationId = "com.divan.qrdrop_app"
         // mobile_scanner requires minSdk 21; Go gomobile AAR requires 21+
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion

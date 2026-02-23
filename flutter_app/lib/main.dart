@@ -15,7 +15,7 @@ class TxqrApp extends StatelessWidget {
     return DynamicColorBuilder(
       builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
         return MaterialApp(
-          title: 'TXQR',
+          title: 'QR Drop',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme: lightDynamic ??
