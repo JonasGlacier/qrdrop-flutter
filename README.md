@@ -70,7 +70,7 @@ When a receiver completes the transfer, the app parses this format, decodes the 
 ```
 flutter_app/
 ├── lib/
-│   ├── main.dart                    # App entry point
+│   ├── main.dart                   # App entry point
 │   ├── services/
 │   │   └── txqr_service.dart       # MethodChannel client for encoder/decoder
 │   ├── screens/

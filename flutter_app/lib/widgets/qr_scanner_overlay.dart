@@ -59,10 +59,10 @@ class _OverlayPainter extends CustomPainter {
     );
 
     // Corner brackets
-    const bracketLen = 32.0;
+    const bracketLen = 24.0;
     const bracketStroke = 8.0;
     final bracketPaint = Paint()
-      ..color = isDetected ? Colors.lightGreenAccent : Colors.redAccent
+      ..color = isDetected ? Colors.lightGreenAccent.withOpacity(0.6) : Colors.redAccent.withOpacity(0.6)
       ..strokeWidth = bracketStroke
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.square;
@@ -87,9 +87,9 @@ class _OverlayPainter extends CustomPainter {
 
     // Progress arc
     if (progress > 0) {
-      final arcRect = windowRect.inflate(-48);
+      final arcRect = windowRect.inflate(-64);
       final progressPaint = Paint()
-        ..color = isDetected ? Colors.lightGreenAccent.withOpacity(0.5) : Colors.redAccent.withOpacity(0.5) 
+        ..color = isDetected ? Colors.lightGreenAccent.withOpacity(0.6) : Colors.redAccent.withOpacity(0.6) 
         ..strokeWidth = 2.0
         ..style = PaintingStyle.fill
         ..strokeCap = StrokeCap.square;

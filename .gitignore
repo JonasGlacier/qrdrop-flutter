@@ -3,3 +3,5 @@ txqr.framework
 *.aar
 *.jar
 /.cursor
+/flutter_app/assets/icon
+/flutter_app/android/app/src/main/res

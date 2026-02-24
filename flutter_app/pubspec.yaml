@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1 
   cupertino_icons: ^1.0.8
   mobile_scanner: ^6.0.2
   share_plus: ^10.1.4
@@ -26,3 +27,13 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: false
+  remove_alpha_ios: true 
+  image_path: "assets/icon/app_icon.png"
+  adaptive_icon_background: "assets/icon/background.png" 
+  adaptive_icon_foreground: "assets/icon/foreground.png"
+  monochrome_android_icon: "assets/icon/monochrome.png" 
+  min_sdk_android: 21 # android min sdk warning
